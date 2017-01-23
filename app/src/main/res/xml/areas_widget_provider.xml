@@ -6,7 +6,7 @@
     android:minResizeHeight="200dp"
     android:minWidth="200dp"
     android:minResizeWidth="200dp"
-    android:previewImage="@mipmap/ic_launcher"
+    android:previewImage="@drawable/icon"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="360000">
 
