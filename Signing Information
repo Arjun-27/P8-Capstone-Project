@@ -3,4 +3,4 @@ Signing Information
 Keystore Password = markoff@1234
 Key Password = markoff@1234
 
-Keystore path (Relative) = /Keystore.jks
+Keystore path (Relative) = /keystore.jks
