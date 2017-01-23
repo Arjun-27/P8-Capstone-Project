@@ -1,0 +1,51 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="fields.area.com.areafields">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+
+        <activity android:name=".MapAreaCalculatorActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".SettingsActivity" android:theme="@style/AppTheme" android:parentActivityName=".MapAreaCalculatorActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_api_key"/>
+
+        <provider
+            android:authorities="fields.area.com.areafields"
+            android:name=".data.MarkOffProvider"
+            android:exported="true"/>
+
+        <receiver android:name="fields.area.com.areafields.widget.AreasWidgetProvider">
+            <intent-filter>
+                <action android:name="fields.area.com.areafields.WIDGET_BUTTON" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/areas_widget_provider" />
+        </receiver>
+        <service android:name="fields.area.com.areafields.widget.AreasWidgetService" android:permission="android.permission.BIND_REMOTEVIEWS"/>
+
+    </application>
+
+</manifest>

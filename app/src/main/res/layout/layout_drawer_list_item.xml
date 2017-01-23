@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@+id/textContent"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textAllCaps="true"
+          android:padding="10dp"
+          android:textSize="20sp"
+          android:textColor="@color/white"
+          android:layout_gravity="start"
+          android:gravity="start"
+          android:layout_marginTop="30dp"
+          android:layout_marginLeft="27dp"
+          android:layout_marginStart="27dp"/>

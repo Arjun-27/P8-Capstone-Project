@@ -1,0 +1,114 @@
+<resources>
+    <string name="app_name">Mark Off</string>
+    <string name="google_api_key">AIzaSyC-bETwysybnmrkgoDQNQ_6gO6m_Y85SOk</string>
+    <string name="str_area">Area</string>
+    <string name="str_distance">Perimeter</string>
+    <string name="str_stop_measuring">Stop Measuring</string>
+    <string name="str_start_measuring">Start Measuring</string>
+    <string name="str_save">Save</string>
+    <string name="str_discard">Discard</string>
+    <string name="str_settings">Settings</string>
+    <string name="str_default_units">Default Units</string>
+    <string name="str_acres">Acres</string>
+    <string name="str_kms">KMs</string>
+    <string name="str_colors">Colors</string>
+    <string name="str_stroke">Stroke</string>
+    <string name="sample_color">#4572AB</string>
+    <string name="str_fill">Fill</string>
+    <string name="sample_color_2">#2323AC</string>
+    <string name="str_transparency">Transparency</string>
+    <string name="sample_trans">30%</string>
+    <string name="str_unique_identifier">Unique Identifier</string>
+    <string name="str_close_drawer">Close Drawer</string>
+    <string name="str_open_drawer">Open Drawer</string>
+    <string name="str_distance_text">Distance</string>
+    <string name="str_name">Name</string>
+    <string name="str_detail_empty">Nothing To Show..</string>
+    <string name="to_refresh_calculations">To refresh calculations</string>
+    <string name="str_updating_widget">Updating widget..</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="satellite">Satellite</string>
+    <string name="terrain">Terrain</string>
+    <string name="normal">Normal</string>
+    <string name="move_right">Move Right</string>
+    <string name="delete_marker">Delete marker</string>
+    <string name="move_left">Move left</string>
+    <string name="calculations_menu">Calculations menu</string>
+    <string name="to_calculate_area">To calculate area</string>
+    <string name="to_calculate_distance">To calculate distance</string>
+
+    <string-array name="calculation_choices">
+        <item>Manual</item>
+        <item>GPS</item>
+    </string-array>
+
+    <string-array name="drawer_content_choices">
+        <item>Map</item>
+        <item>Saved Maps</item>
+        <item>Settings</item>
+    </string-array>
+    
+    <string-array name="area_units_list">
+        <item>Acres</item>
+        <item>Hectares</item>
+        <item>Square Kilometer (km&lt;sup&gt;&lt;small&gt;2&lt;/small&gt;&lt;/sup&gt;)</item>
+        <item>Square Meter (m&lt;sup&gt;&lt;small&gt;2&lt;/small&gt;&lt;/sup&gt;)</item>
+        <item>Square Foot (ft&lt;sup&gt;&lt;small&gt;2&lt;/small&gt;&lt;/sup&gt;)</item>
+        <item>Square Yard (yd&lt;sup&gt;&lt;small&gt;2&lt;/small&gt;&lt;/sup&gt;)</item>
+        <item>Square Inch (in&lt;sup&gt;&lt;small&gt;2&lt;/small&gt;&lt;/sup&gt;)</item>
+    </string-array>
+
+    <string-array name="area_units_factor">
+        <item>0.000247105</item>
+        <item>0.0001</item>
+        <item>0.000001</item>
+        <item>1</item>
+        <item>10.7639</item>
+        <item>1.19599</item>
+        <item>1550</item>
+    </string-array>
+
+    <string-array name="distance_units_list">
+        <item>Kilometer (KMs)</item>
+        <item>Meter (Ms)</item>
+        <item>Mile</item>
+        <item>Yard</item>
+        <item>Inch</item>
+        <item>Foot</item>
+        <item>Nautical Mile</item>
+    </string-array>
+
+    <string-array name="distance_units_factor">
+        <item>0.001</item>
+        <item>1</item>
+        <item>0.000621371</item>
+        <item>1.09361296</item>
+        <item>39.370066559999997935</item>
+        <item>3.2808388799999996799</item>
+        <item>0.00053995663640604750835</item>
+    </string-array>
+    
+    <!--<string-array name="transparency_in_hex">-->
+        <!--<item>00</item>-->
+        <!--<item>0D</item>-->
+        <!--<item>1A</item>-->
+        <!--<item>26</item>-->
+        <!--<item>33</item>-->
+        <!--<item>40</item>-->
+        <!--<item>4D</item>-->
+        <!--<item>59</item>-->
+        <!--<item>66</item>-->
+        <!--<item>73</item>-->
+        <!--<item>80</item>-->
+        <!--<item>8C</item>-->
+        <!--<item>99</item>-->
+        <!--<item>A6</item>-->
+        <!--<item>B3</item>-->
+        <!--<item>BF</item>-->
+        <!--<item>CC</item>-->
+        <!--<item>D9</item>-->
+        <!--<item>E6</item>-->
+        <!--<item>F2</item>-->
+        <!--<item>FF</item>-->
+    <!--</string-array>-->
+</resources>

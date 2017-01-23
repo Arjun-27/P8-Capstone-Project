@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_content"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/m_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:gravity="start"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="Name"
+            android:textColor="@color/colorMatBlack"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id="@+id/text_area"
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/str_area"
+            android:layout_below="@+id/m_name"
+            android:textColor="@color/dark_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/text_area_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:text="@string/str_area"
+            android:layout_below="@+id/text_area"
+            android:textColor="@color/dark_gray"/>
+
+        <TextView
+            android:id="@+id/text_perimeter"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/str_distance"
+            android:layout_below="@+id/text_area_container"
+            android:textColor="@color/dark_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/text_perimeter_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:text="@string/str_distance"
+            android:layout_marginBottom="15dp"
+            android:layout_below="@+id/text_perimeter"
+            android:textColor="@color/dark_gray"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

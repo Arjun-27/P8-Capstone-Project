@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="10dp"
+              android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/labels"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/textAreaLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/str_area"
+            style="@style/RobotoTextViewStyle"
+            android:textColor="@color/gray"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/textPerimeterLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/str_distance"
+            style="@style/RobotoTextViewStyle"
+            android:textColor="@color/gray"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="0.5"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/values"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/textArea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/str_area"
+            style="@style/RobotoTextViewStyle"
+            android:textColor="@color/colorMatBlack"
+            android:textSize="18sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/textDistance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/str_distance"
+            style="@style/RobotoTextViewStyle"
+            android:textSize="18sp"
+            android:textColor="@color/colorMatBlack"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="0.5"/>
+
+    </LinearLayout>
+
+</LinearLayout>
