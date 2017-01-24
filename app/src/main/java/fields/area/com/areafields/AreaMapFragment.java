@@ -45,7 +45,6 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -89,7 +88,6 @@ public class AreaMapFragment extends SupportMapFragment implements GoogleApiClie
     private static final String LOG_TAG = "AreaMap";
     private GoogleApiClient mGoogleApiClient;
 
-    Location mCurrentLocation;
     FrameLayout frMap;
     Button startMeasure;
     FloatingActionsMenu fabMenu;
@@ -244,7 +242,7 @@ public class AreaMapFragment extends SupportMapFragment implements GoogleApiClie
             @Override
             public void onClick(View v) {
                 if(invisibleMarker == null) {
-                    Toast.makeText(getContext(), "No Marker Selected!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.str_no_marker_selected, Toast.LENGTH_SHORT).show();
                 } else {
                     if(list.size() > 5 && isPolygon)
                         removeMidMarkers(invisibleMarkerPos);
@@ -320,7 +318,7 @@ public class AreaMapFragment extends SupportMapFragment implements GoogleApiClie
                 }
                 
                 else
-                    Toast.makeText(getContext(), "No Marker Selected!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.str_no_marker_selected, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -345,7 +343,7 @@ public class AreaMapFragment extends SupportMapFragment implements GoogleApiClie
                 }
 
                 else
-                    Toast.makeText(getContext(), "No Marker Selected!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.str_no_marker_selected, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -602,9 +600,9 @@ public class AreaMapFragment extends SupportMapFragment implements GoogleApiClie
                         //                                          int[] grantResults)
                         // to handle the case where the user grants the permission. See the documentation
                         // for ActivityCompat#requestPermissions for more details.
-                        Toast.makeText(getActivity(), "No permission granted for accessing location..", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.no_gps_permission, Toast.LENGTH_SHORT).show();
                     } else if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                        Toast.makeText(getActivity(), "GPS Not Enabled..", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.gps_not, Toast.LENGTH_SHORT).show();
                     } else {
                         latLngs.clear();
                         googleMap.clear();
@@ -1500,7 +1498,7 @@ public class AreaMapFragment extends SupportMapFragment implements GoogleApiClie
 
         @Override
         protected List<LatLng> doInBackground(Object... params) {
-            AreaMapFragment.this.isPolygon = (boolean) params[0];
+            AreaMapFragment.this.isPolygon = isPolygon = (boolean) params[0];
             computationId = (int) params[1];
 
             Log.d(TAG+ "_bool", ""+isPolygon);

@@ -36,6 +36,9 @@
     <string name="calculations_menu">Calculations menu</string>
     <string name="to_calculate_area">To calculate area</string>
     <string name="to_calculate_distance">To calculate distance</string>
+    <string name="str_no_marker_selected">No Marker Selected!</string>
+    <string name="no_gps_permission">No permission granted for accessing location..</string>
+    <string name="gps_not">GPS Not Enabled..</string>
 
     <string-array name="calculation_choices">
         <item>Manual</item>

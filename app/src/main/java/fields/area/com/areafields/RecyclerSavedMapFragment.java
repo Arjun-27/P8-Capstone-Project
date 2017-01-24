@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,7 +27,7 @@ import fields.area.com.areafields.data.MarkOffContract;
  * Created by Arjun on 16-Jan-2017 for AreaFields.
  */
 
-public class RecyclerSavedMapFragment extends Fragment {
+public class RecyclerSavedMapFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
     RecyclerView recyclerView;
 
     LinearLayoutManager manager;
@@ -48,80 +51,76 @@ public class RecyclerSavedMapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         savedInstanceState = this.getArguments();
 
+        loadAreas = savedInstanceState.getBoolean("isArea");
+
         if(rootView == null)
             rootView = inflater.inflate(R.layout.layout_recycler, container, false);
 
         if(recyclerView == null) {
             recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_saved_maps);
             recyclerView.setLayoutManager(manager);
+            getLoaderManager().initLoader(loadAreas ? 0 : 1, null, this);
         }
 
-        loadAreas = savedInstanceState.getBoolean("isArea");
+        getLoaderManager().restartLoader(loadAreas ? 0 : 1, null, this);
 
-        new LoadSavedDetails().execute();
         return rootView;
     }
 
-    private class LoadSavedDetails extends AsyncTask<Void, Void, ArrayList<SavedMapDetails>> {
-
-        MaterialDialog dialog;
-
-        public void onPreExecute() {
-            dialog = new Utility().createIndeterminateDialog(getContext(), loadAreas ? "Loading Saved Areas.." : "Loading Saved Distances..");
-            dialog.show();
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        switch (id) {
+            case 0:
+                return new CursorLoader(getContext(), MarkOffContract.AreaComputations.CONTENT_URI, null, null, null, null);
+            case 1:
+                return new CursorLoader(getContext(), MarkOffContract.DistanceComputations.CONTENT_URI, null, null, null, null);
         }
+        return null;
+    }
 
-        @Override
-        protected ArrayList<SavedMapDetails> doInBackground(Void... params) {
-            ArrayList<SavedMapDetails> detailList = new ArrayList<>();
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        adapter = new SavedMapsRecyclerAdapter(loadAdapterData(data), getActivity());
+        recyclerView.setAdapter(adapter);
+    }
 
-            if (loadAreas) {
-                Cursor cursor = getContext().getContentResolver().query(MarkOffContract.AreaComputations.CONTENT_URI, null, null, null, null);
-                if(cursor != null) {
-                    while (cursor.moveToNext()) {
-                        SavedMapDetails details = new SavedMapDetails();
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        recyclerView.setAdapter(null);
+    }
 
-                        details.setIsArea(true);
-                        details.setComputationId(cursor.getInt(cursor.getColumnIndex(MarkOffContract.AreaComputations.ID)));
-                        details.setName(cursor.getString(cursor.getColumnIndex(MarkOffContract.AreaComputations.NAME)));
-                        details.setArea(cursor.getString(cursor.getColumnIndex(MarkOffContract.AreaComputations.AREA)));
-                        details.setPerimeter(cursor.getString(cursor.getColumnIndex(MarkOffContract.AreaComputations.PERIMETER)));
+    private ArrayList<SavedMapDetails> loadAdapterData(Cursor cursor) {
+        ArrayList<SavedMapDetails> detailList = new ArrayList<>();
+        if (loadAreas) {
+            if(cursor != null) {
+                while (cursor.moveToNext()) {
+                    SavedMapDetails details = new SavedMapDetails();
 
-                        detailList.add(details);
-                    }
-                    cursor.close();
-                }
-            } else {
-                Cursor cursor = getContext().getContentResolver().query(MarkOffContract.DistanceComputations.CONTENT_URI, null, null, null, null);
-                if(cursor != null) {
-                    while (cursor.moveToNext()) {
-                        SavedMapDetails details = new SavedMapDetails();
+                    details.setIsArea(true);
+                    details.setComputationId(cursor.getInt(cursor.getColumnIndex(MarkOffContract.AreaComputations.ID)));
+                    details.setName(cursor.getString(cursor.getColumnIndex(MarkOffContract.AreaComputations.NAME)));
+                    details.setArea(cursor.getString(cursor.getColumnIndex(MarkOffContract.AreaComputations.AREA)));
+                    details.setPerimeter(cursor.getString(cursor.getColumnIndex(MarkOffContract.AreaComputations.PERIMETER)));
 
-                        details.setIsArea(false);
-                        details.setComputationId(cursor.getInt(cursor.getColumnIndex(MarkOffContract.DistanceComputations.ID)));
-                        details.setName(cursor.getString(cursor.getColumnIndex(MarkOffContract.DistanceComputations.NAME)));
-                        details.setPerimeter(cursor.getString(cursor.getColumnIndex(MarkOffContract.DistanceComputations.DISTANCE)));
-
-                        detailList.add(details);
-                    }
-                    cursor.close();
+                    detailList.add(details);
                 }
             }
+        } else {
+            if(cursor != null) {
+                while (cursor.moveToNext()) {
+                    SavedMapDetails details = new SavedMapDetails();
 
-            return detailList;
-        }
+                    details.setIsArea(false);
+                    details.setComputationId(cursor.getInt(cursor.getColumnIndex(MarkOffContract.DistanceComputations.ID)));
+                    details.setName(cursor.getString(cursor.getColumnIndex(MarkOffContract.DistanceComputations.NAME)));
+                    details.setPerimeter(cursor.getString(cursor.getColumnIndex(MarkOffContract.DistanceComputations.DISTANCE)));
 
-        public void onPostExecute(ArrayList<SavedMapDetails> result) {
-            dialog.dismiss();
-
-            if(result != null) {
-                adapter = new SavedMapsRecyclerAdapter(result, getActivity());
-                recyclerView.setAdapter(adapter);
-
-            } else {
-                Snackbar.make(recyclerView, loadAreas ? "No Saved Areas.." : "No Saved Distances..", Snackbar.LENGTH_SHORT).show();
+                    detailList.add(details);
+                }
             }
         }
+
+        return detailList;
     }
 
 }
