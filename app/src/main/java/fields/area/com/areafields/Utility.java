@@ -3,13 +3,10 @@ package fields.area.com.areafields;
 import android.content.ContentValues;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
@@ -17,15 +14,13 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
-import fields.area.com.areafields.adapter.SavedMapDetails;
 import fields.area.com.areafields.data.MarkOffContract;
 
 import static fields.area.com.areafields.data.MarkOffContract.AreaComputations.TAG;
 
 /**
+ *
  * Created by Arjun on 25-Dec-2016 for AreaFields.
  */
 
@@ -144,8 +139,8 @@ public class Utility {
             Log.d(TAG, "Updated");
 
             new MaterialDialog.Builder(context)
-                    .content("Measurements have been saved.")
-                    .positiveText("Okay")
+                    .content(R.string.str_saved)
+                    .positiveText(R.string.str_okay)
                     .build()
                     .show();
         }

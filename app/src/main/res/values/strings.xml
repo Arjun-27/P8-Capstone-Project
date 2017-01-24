@@ -39,6 +39,16 @@
     <string name="str_no_marker_selected">No Marker Selected!</string>
     <string name="no_gps_permission">No permission granted for accessing location..</string>
     <string name="gps_not">GPS Not Enabled..</string>
+    <string name="valid_identifier">Enter a valid identifier</string>
+    <string name="str_okay">Okay</string>
+    <string name="discard_without_save">Do you want to discard without saving.. ?</string>
+    <string name="discard">Discard</string>
+    <string name="cancel">Cancel</string>
+    <string name="areas">Areas</string>
+    <string name="distances">Distances</string>
+    <string name="str_choose">Choose Stroke Color</string>
+    <string name="str_fill_color">Choose Fill Color</string>
+    <string name="str_saved">Measurements have been saved.</string>
 
     <string-array name="calculation_choices">
         <item>Manual</item>

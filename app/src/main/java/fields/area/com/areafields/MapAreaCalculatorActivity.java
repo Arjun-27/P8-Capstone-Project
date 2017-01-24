@@ -93,7 +93,7 @@ public class MapAreaCalculatorActivity extends AppCompatActivity {
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 900);
-            Toast.makeText(this, "No permission granted for accessing location..", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.no_gps_permission, Toast.LENGTH_SHORT).show();
         }
         
         startMeasure = (Button) findViewById(R.id.btnMeasure);
@@ -175,10 +175,6 @@ public class MapAreaCalculatorActivity extends AppCompatActivity {
     }
 
     private void clearOptionsMenu() {
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         if(dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         } else if(startMeasure.getVisibility() == View.VISIBLE) {
@@ -220,12 +216,15 @@ public class MapAreaCalculatorActivity extends AppCompatActivity {
             resetToolbar();
         } else if(calLayout.getVisibility() == View.VISIBLE) {
             dialog = new MaterialDialog.Builder(this)
-                    .content("Do you to discard without saving.. ?")
-                    .positiveText("Discard")
-                    .negativeText("Cancel")
+                    .content(R.string.discard_without_save)
+                    .positiveText(R.string.discard)
+                    .negativeText(R.string.cancel)
                     .onPositive(new MaterialDialog.SingleButtonCallback() {
                         @Override
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                            getSupportActionBar().setDisplayShowHomeEnabled(true);
+
                             discardPoly();
                         }
                     })
@@ -282,9 +281,9 @@ public class MapAreaCalculatorActivity extends AppCompatActivity {
 
             case R.id.item_discard:
                 new MaterialDialog.Builder(this)
-                        .content("Do you want to discard without saving.. ?")
-                        .positiveText("Discard")
-                        .negativeText("Cancel")
+                        .content(R.string.discard_without_save)
+                        .positiveText(R.string.discard)
+                        .negativeText(R.string.cancel)
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
@@ -301,12 +300,12 @@ public class MapAreaCalculatorActivity extends AppCompatActivity {
 
                 final MaterialDialog mDialog = new MaterialDialog.Builder(this)
                         .customView(view, false)
-                        .positiveText("Okay")
+                        .positiveText(R.string.str_okay)
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                 if (editText.getText().toString().trim().equals("")) {
-                                    editText.setError("Enter a valid identifier");
+                                    editText.setError(getString(R.string.valid_identifier));
                                 } else {
                                     sendBroadcast(new Intent(Utility.SAVE_POLY_EVENT).putExtra(Utility.POLY_NAME, editText.getText().toString()));
                                     dialog.dismiss();

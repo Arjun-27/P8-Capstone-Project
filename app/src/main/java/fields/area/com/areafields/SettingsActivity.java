@@ -154,7 +154,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ColorPickerDialogBuilder
                         .with(SettingsActivity.this)
-                        .setTitle("Choose Stroke Color")
+                        .setTitle(getString(R.string.str_choose))
                         .initialColor(Color.parseColor(MySharedPreferences.getDefaultStrokeColor(SettingsActivity.this)))
                         .wheelType(ColorPickerView.WHEEL_TYPE.CIRCLE)
                         .density(12)
@@ -189,7 +189,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ColorPickerDialogBuilder
                         .with(SettingsActivity.this)
-                        .setTitle("Choose Fill Color")
+                        .setTitle(getString(R.string.str_fill_color))
                         .initialColor(Color.parseColor(MySharedPreferences.getDefaultFillColor(SettingsActivity.this)))
                         .wheelType(ColorPickerView.WHEEL_TYPE.CIRCLE)
                         .density(12)
@@ -198,7 +198,7 @@ public class SettingsActivity extends AppCompatActivity {
                             public void onColorSelected(int selectedColor) {
 
                             }
-                        }).setPositiveButton("Okay", new ColorPickerClickListener() {
+                        }).setPositiveButton(getString(R.string.str_okay), new ColorPickerClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
                                 String currentDefaultColor = "#" + Integer.toHexString(selectedColor).toUpperCase();
@@ -211,7 +211,7 @@ public class SettingsActivity extends AppCompatActivity {
 
                                 fillColor.setText(currentDefaultColor);
                             }
-                        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) { }
                         }).build()

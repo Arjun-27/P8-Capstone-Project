@@ -60,8 +60,8 @@ public class LoadSavedMapsFragment extends Fragment {
 //        spec.setIndicator("Areas");
 //        tabHost.addTab(spec);
 
-        tabHost.addTab(tabHost.newTabSpec("Areas").setIndicator("Areas"), RecyclerSavedMapFragment.class, bundle_area);
-        tabHost.addTab(tabHost.newTabSpec("Distances").setIndicator("Distances"), RecyclerSavedMapFragment.class, bundle_distance);
+        tabHost.addTab(tabHost.newTabSpec(getString(R.string.areas)).setIndicator(getString(R.string.areas)), RecyclerSavedMapFragment.class, bundle_area);
+        tabHost.addTab(tabHost.newTabSpec(getString(R.string.distances)).setIndicator(getString(R.string.distances)), RecyclerSavedMapFragment.class, bundle_distance);
 
 //        spec = tabHost.newTabSpec("Distances");
 //        spec.setContent(R.id.recycler_view_group);
